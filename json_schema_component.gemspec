@@ -7,11 +7,12 @@ Gem::Specification.new do |spec|
   spec.version = JsonSchemaComponent::VERSION
   spec.authors = ["Tomoya Chiba"]
   spec.email = ["tomo.asleep@gmail.com"]
+  spec.license = "Apache-2.0"
 
   spec.summary = "A view library with JSON Schema"
   spec.description = "A view library with JSON Schema"
   spec.homepage = "https://github.com/increments/json_schema_component"
-  spec.required_ruby_version = ">= 2.6.0"
+  spec.required_ruby_version = ">= 2.7.0"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = spec.homepage
@@ -30,8 +31,11 @@ Gem::Specification.new do |spec|
 
   # Uncomment to register a new dependency of your gem
   # spec.add_dependency "example-gem", "~> 1.0"
+  spec.add_dependency "activesupport"
   spec.add_dependency "json-schema"
   spec.add_dependency "json_world"
+
+  # Don't write development dependencies here. Add to Gemfile instead.
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html

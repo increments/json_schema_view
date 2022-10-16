@@ -1,5 +1,34 @@
 AllCops:
-  TargetRubyVersion: 2.6
+  # Support only maintained versions.
+  # See: https://www.ruby-lang.org/en/downloads/branches/
+  TargetRubyVersion: 2.7
+  Exclude:
+   - lib/rails/generators/*/templates/**/*
+   - spec/.snapshots/**/*
+   - tmp/**/*
+   # Avoid referring vendored gem's configurations.
+   # See: https://github.com/rubocop/rubocop/issues/9832
+   - vendor/**/*
+
+Metrics:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: true
+  AllowedConstants:
+    - DSL
+  Exclude:
+    - spec/**/*
+    - yard/**/*
+
+Style/EmptyElse:
+  EnforcedStyle: empty
+
+Style/GuardClause:
+  Enabled: false
+
+Style/MultilineBlockChain:
+  Enabled: false
 
 Style/StringLiterals:
   Enabled: true
@@ -9,5 +38,21 @@ Style/StringLiteralsInInterpolation:
   Enabled: true
   EnforcedStyle: double_quotes
 
+Style/TrailingCommaInArguments:
+  Enabled: true
+  EnforcedStyleForMultiline: consistent_comma
+
+Lint/MissingSuper:
+  Enabled: false
+
+Lint/ShadowedArgument:
+  Enabled: false
+
+Lint/ShadowedException:
+  Enabled: false
+
+Lint/ShadowingOuterLocalVariable:
+  Enabled: false
+
 Layout/LineLength:
-  Max: 120
+  Enabled: false

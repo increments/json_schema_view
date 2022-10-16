@@ -1,22 +1,105 @@
 # JsonSchemaComponent
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/json_schema_component`. To experiment with that code, run `bin/console` for an interactive prompt.
+JsonSchemaComponent is a view framework that brings Schema-driven Development to Rails view and another view frameworks (e.g react_on_rails).
 
-TODO: Delete this and the text above, and describe your gem
+JsonSchemaComponent is a Ruby object:
 
+```ruby
+class TodoItemComponent < JsonSchemaComponent::BaseComponent
+  renderer_class :react_on_rails
+
+  props_class do
+    property :title, type: String
+    property :done, type: [TrueClass, FalseClass]
+
+    attr_reader :title, :done
+
+    def initialize(title:, done:)
+      @title = title
+      @done = done
+    end
+  end
+end
+```
+
+The component can be passed to Rails' `render` and then its schema validates its props:
+
+```ruby
+render TodoItemComponent.new(props: { title: 'Buy milk', done: false }) # => Valid against schema. Renders a view by using renderer (react_on_rails)
+
+render TodoListComponent.new(props: { title: 'Buy milk', done: "Invalid value" }) # => Invalid. Raises an error.
+```
+
+The component's schema can be exported as JSON Schema:
+
+```json
+// TodoItemComponent.to_json_schema
+{
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "done": {
+      "type": ["boolean"]
+    }
+  },
+  "required": ["title", "done"]
+}
+```
+
+Its JSON Schema can be used to generate type definitions for other languages.
+It helps consistent typing between different languages:
+
+```jsx
+import type { TodoItemComponentProps } from './generated-types-from-json-schema/TodoItemComponent';
+
+export const TodoItemComponent = ({ title, done }: TodoItemComponentProps) => {
+  return (
+    <div>
+      <input type="checkbox" checked={done} />
+      <label>{title}</label>
+    </div>
+  );
+};
+```
+
+# Getting Started
 ## Installation
 
-Install the gem and add to the application's Gemfile by executing:
+1. Install the gem and add to the application's Gemfile by executing:
 
-    $ bundle add json_schema_component
+```console
+$ bundle add json_schema_component
+```
 
-If bundler is not being used to manage dependencies, install the gem by executing:
+2. Run the generator:
 
-    $ gem install json_schema_component
+```console
+$ bin/rails generate json_schema_component:install
+    create  config/initializers/json_schema_component.rb
+    create  app/components/base_component.rb
+    create  app/components/base_props.rb
+    create  app/components/api_resource.rb
+    create  app/components/component_schema_set.rb
+    create  app/components/example_todo_list_component.rb
+    create  app/components/example_todo_list_component/todo_item_resource.rb
+```
 
-## Usage
+This task sets up `app/components` as the place of component definitions and an example component :-)
 
-TODO: Write usage instructions here
+
+## Export JSON Schema
+
+JsonSchemaComponent provides a rake task to export JSON Schema of components:
+
+```console
+$ rake json_schema_component:export[primary]
+Exports resource classes in ComponentSchemaSet...
+ExampleTodoListComponent -> /path/to/rails/application/json_schema/ExampleTodoListComponent.json
+```
+
+The behavior of the export task (output directory, classes to export, ...etc) can be configured on ComponentSchemaSet.
 
 ## Development
 
@@ -26,8 +109,8 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/json_schema_component. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/json_schema_component/blob/main/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/increments/json_schema_component. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/increments/json_schema_component/blob/main/CODE_OF_CONDUCT.md).
 
 ## Code of Conduct
 
-Everyone interacting in the JsonSchemaComponent project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/json_schema_component/blob/main/CODE_OF_CONDUCT.md).
+Everyone interacting in the JsonSchemaComponent project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/increments/json_schema_component/blob/main/CODE_OF_CONDUCT.md).

@@ -1,0 +1,14 @@
+# frozen_string_literal: true
+
+require "json_schema_component"
+
+Rails.application.config.autoload_paths += [Rails.root.join("<%= components_path %>")]
+
+JsonSchemaComponent.configure do |config|
+  # You can export your components' schemas by running:
+  # 
+  #  $ rake json_schema_component:export:primary
+  config.schema_sets = {
+    "primary": "<%= schema_set_class_name %>",
+  }
+end

@@ -54,12 +54,12 @@ module JsonSchemaComponent
 
     # @param props [Hash, self::Props] props of the React component.
     # @param validate [Boolean] if true, validate props besed on its schema before rendering.
-    def initialize(props:, validate: true, **renderer_options)
+    def initialize(props:, validate: Configuration.instance.validate_by_default, **renderer_options)
       raise "Component instance cannot be created if no renderer is not defined" unless self.class.renderer_class
 
       @props = props.is_a?(self.class.props_class) ? props : self.class.props_class.new(**props)
-      @validate = validate
-      @renderer = self.class.renderer_class.new(self, **renderer_options)
+      @validate = validate ||
+                  @renderer = self.class.renderer_class.new(self, **renderer_options)
     end
 
     # @note This method is used when the component is rendered.

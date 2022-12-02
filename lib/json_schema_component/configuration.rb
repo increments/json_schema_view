@@ -21,10 +21,14 @@ module JsonSchemaComponent
 
     def initialize
       @schema_sets = SchemaSetDictionary.new
+      @validate_by_default = false
     end
 
     # @return [SchemaSetDictionary{Symbol => Symbol}] The renderers.
     attr_reader :schema_sets
+
+    # @return [Boolean] Whether if validate components with its schema on render by default.
+    attr_accessor :validate_by_default
 
     # @param new_sets [Hash{String, Symbol => String, Symbol}]
     def schema_sets=(new_sets)

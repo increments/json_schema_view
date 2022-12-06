@@ -5,10 +5,10 @@ require "json_schema_component"
 class ExampleTodoListComponent
   # This is an example definition of a resource.
   #
-  # A class that includes {JsonSchemaComponent::ApiResource} can generate its JSON Schema
+  # A class that includes {JsonSchemaComponent::JsonSchemaDefinable} can generate its JSON Schema
   # and it can be used as a type in another resource's property.
   class TodoItemResource
-    include ApiResource
+    include JsonSchemaComponent::JsonSchemaDefinable
 
     property(
       :name,

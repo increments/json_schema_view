@@ -39,7 +39,7 @@ require "json_schema_component"
 #
 class ExampleTodoListComponent < BaseComponent
   # props_class defines the properties class for the component.
-  # properties class is a special form of {ApiResource}. its instance is used by renderer to render component's content.
+  # properties class is a special form of {JsonSchemaDefinable}. its instance is used by renderer to render component's content.
   props_class do
     # Some class methods (properties, description, additional_properties, etc.) are provided to define the JSON Schema of the class.
     # Property
@@ -47,7 +47,7 @@ class ExampleTodoListComponent < BaseComponent
     # @see https://json-schema.org/understanding-json-schema/reference/object.html#properties
     property(
       :todo_items,
-      # To type keyword, you can pass some primitive classes (String, Integer, TrueClass, Array, ...etc), a hash representing JSON Schema, an {ApiResource}.
+      # To type keyword, you can pass some primitive classes (String, Integer, TrueClass, Array, ...etc), a hash representing JSON Schema, an {JsonSchemaDefinable}.
       type: Array,
       item: {
         type: TodoItemResource

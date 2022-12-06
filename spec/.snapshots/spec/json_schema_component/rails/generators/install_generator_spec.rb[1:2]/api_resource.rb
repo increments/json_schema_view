@@ -3,8 +3,8 @@
 require "json_schema_component"
 
 # @abstract
-module ApiResource
+module JsonSchemaDefinable
   extend ActiveSupport::Concern
 
-  include ::JsonSchemaComponent::ApiResource
+  include ::JsonSchemaComponent::JsonSchemaDefinable
 end

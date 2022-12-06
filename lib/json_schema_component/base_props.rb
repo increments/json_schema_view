@@ -3,7 +3,7 @@
 module JsonSchemaComponent
   # @abstract
   class BaseProps
-    include ApiResource
+    include JsonSchemaDefinable
 
     class << self
       # @note Override of {JsonWorld::DSL::ClassMethods#title}

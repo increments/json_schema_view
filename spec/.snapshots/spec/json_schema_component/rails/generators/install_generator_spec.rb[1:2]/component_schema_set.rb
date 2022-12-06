@@ -14,7 +14,7 @@ class ComponentSchemaSet < ::JsonSchemaComponent::SchemaSet
     [
       # Export all component classes (except for BaseComopnent) in `root_path`.
       *search_component_classes.excluding(BaseComponent),
-      # You can add extra classes including {ApiResource} here to export their JSON Schemas.
+      # You can add extra classes including {JsonSchemaDefinable} here to export their JSON Schemas.
     ]
   end
 

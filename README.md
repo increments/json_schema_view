@@ -81,7 +81,7 @@ $ bin/rails generate json_schema_component:install
     create  config/initializers/json_schema_component.rb
     create  app/components/base_component.rb
     create  app/components/base_props.rb
-    create  app/components/api_resource.rb
+    create  app/components/json_schema_definable.rb
     create  app/components/component_schema_set.rb
     create  app/components/example_todo_list_component.rb
     create  app/components/example_todo_list_component/todo_item_resource.rb

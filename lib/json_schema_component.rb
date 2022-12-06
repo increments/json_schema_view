@@ -2,7 +2,7 @@
 
 require "active_support"
 
-require_relative "json_schema_component/api_resource"
+require_relative "json_schema_component/json_schema_definable"
 require_relative "json_schema_component/base_component"
 require_relative "json_schema_component/base_props"
 require_relative "json_schema_component/configuration"

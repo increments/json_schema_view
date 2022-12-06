@@ -24,7 +24,7 @@ module JsonSchemaComponent
       raise NotImplementedError
     end
 
-    # @return [Array<Class<ApiResource>>]
+    # @return [Array<Class<JsonSchemaDefinable>>]
     def resource_classes_to_export
       []
     end

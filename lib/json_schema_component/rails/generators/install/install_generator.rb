@@ -19,7 +19,6 @@ module JsonSchemaComponent
       def create_base_classes
         template "base_component.rb", File.join(components_path, "base_component.rb")
         template "base_props.rb", File.join(components_path, "base_props.rb")
-        template "api_resource.rb", File.join(components_path, "api_resource.rb")
         template "component_schema_set.rb", File.join(components_path, "component_schema_set.rb")
       end
 

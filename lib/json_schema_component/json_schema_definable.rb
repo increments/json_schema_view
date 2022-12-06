@@ -6,7 +6,7 @@ require_relative "json_world_extensions"
 
 module JsonSchemaComponent
   # @abstract
-  module ApiResource
+  module JsonSchemaDefinable
     extend ActiveSupport::Concern
 
     include ::JsonWorld::DSL

@@ -17,7 +17,6 @@ RSpec.describe JsonSchemaComponent::Generators::InstallGenerator, type: :generat
 
   it "setups components dir" do
     subject
-    expect(file_content("app/components/api_resource.rb")).to match_snapshot("api_resource.rb")
     expect(file_content("app/components/base_component.rb")).to match_snapshot("base_component.rb")
     expect(file_content("app/components/base_props.rb")).to match_snapshot("base_props.rb")
     expect(file_content("app/components/component_schema_set.rb")).to match_snapshot("component_schema_set.rb")

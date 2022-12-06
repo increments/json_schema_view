@@ -3,10 +3,10 @@
 require "nokogiri"
 require "react_on_rails"
 
-module JsonSchemaComponentTesting
+module JsonSchemaViewTesting
 end
 
-RSpec.describe JsonSchemaComponent::BaseComponent do
+RSpec.describe JsonSchemaView::BaseComponent do
   let(:component_class) { Class.new(described_class) }
 
   describe ".props_class" do
@@ -14,7 +14,7 @@ RSpec.describe JsonSchemaComponent::BaseComponent do
       subject { component_class.props_class }
 
       it "defines a props class and returns it" do
-        expect(subject).to be < JsonSchemaComponent::BaseProps
+        expect(subject).to be < JsonSchemaView::BaseProps
         expect(subject).to be(component_class::Props)
       end
     end
@@ -27,7 +27,7 @@ RSpec.describe JsonSchemaComponent::BaseComponent do
       end
 
       it "defines a props class and returns it" do
-        expect(subject).to be < JsonSchemaComponent::BaseProps
+        expect(subject).to be < JsonSchemaView::BaseProps
         expect(subject).to be(component_class::Props)
 
         expect(subject).to be_method_defined(:some_method)
@@ -81,7 +81,7 @@ RSpec.describe JsonSchemaComponent::BaseComponent do
     let(:dom) { Nokogiri::HTML(subject) }
 
     before do
-      JsonSchemaComponentTesting::TestComponent = component_class
+      JsonSchemaViewTesting::TestComponent = component_class
 
       component_class.class_eval do
         renderer_class :react_on_rails
@@ -101,7 +101,7 @@ RSpec.describe JsonSchemaComponent::BaseComponent do
     end
 
     after do
-      JsonSchemaComponentTesting.module_eval do
+      JsonSchemaViewTesting.module_eval do
         remove_const(:TestComponent) if const_defined?(:TestComponent)
       end
     end

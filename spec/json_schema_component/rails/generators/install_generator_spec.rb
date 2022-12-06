@@ -1,18 +1,18 @@
 # frozen_string_literal: true
 
-require "json_schema_component/rails/generators"
+require "json_schema_view/rails/generators"
 
 require "support/matchers/match_snapshot"
 require "support/helpers/generator_spec_helper"
 
-RSpec.describe JsonSchemaComponent::Generators::InstallGenerator, type: :generator do
+RSpec.describe JsonSchemaView::Generators::InstallGenerator, type: :generator do
   include GeneratorSpecHelper
 
   subject { run_generator }
 
   it "generates initializer" do
     subject
-    expect(file_content("config/initializers/json_schema_component.rb")).to match_snapshot("initializer.rb")
+    expect(file_content("config/initializers/json_schema_view.rb")).to match_snapshot("initializer.rb")
   end
 
   it "setups components dir" do

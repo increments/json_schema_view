@@ -5,7 +5,7 @@ require "action_view/railtie"
 require "rspec/rails"
 require "ammeter/init"
 
-require "json_schema_component"
+require "json_schema_view"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

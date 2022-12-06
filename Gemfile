@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in json_schema_component.gemspec
+# Specify your gem's dependencies in json_schema_view.gemspec
 gemspec
 
 group :development, :test do

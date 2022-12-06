@@ -1,0 +1,5 @@
+Description:
+  Generates the configuration file (config/initializers/json_schema_view.rb) and setup components dir (app/components).:
+
+Example:
+  `bin/rails generate json_schema_view:install`

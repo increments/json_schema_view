@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe JsonSchemaComponent::BaseProps do
+RSpec.describe JsonSchemaView::BaseProps do
   let(:props_class) { Class.new(described_class) }
 
   describe "#as_json" do

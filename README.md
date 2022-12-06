@@ -1,11 +1,11 @@
-# JsonSchemaComponent
+# JsonSchemaView
 
-JsonSchemaComponent is a view framework that brings Schema-driven Development to Rails view and another view frameworks (e.g react_on_rails).
+JsonSchemaView is a view framework that brings Schema-driven Development to Rails view and another view frameworks (e.g react_on_rails).
 
-JsonSchemaComponent is a Ruby object:
+JsonSchemaView is a Ruby object:
 
 ```ruby
-class TodoItemComponent < JsonSchemaComponent::BaseComponent
+class TodoItemComponent < JsonSchemaView::BaseComponent
   renderer_class :react_on_rails
 
   props_class do
@@ -71,14 +71,14 @@ export const TodoItemComponent = ({ title, done }: TodoItemComponentProps) => {
 1. Install the gem and add to the application's Gemfile by executing:
 
 ```console
-$ bundle add json_schema_component
+$ bundle add json_schema_view
 ```
 
 2. Run the generator:
 
 ```console
-$ bin/rails generate json_schema_component:install
-    create  config/initializers/json_schema_component.rb
+$ bin/rails generate json_schema_view:install
+    create  config/initializers/json_schema_view.rb
     create  app/components/base_component.rb
     create  app/components/base_props.rb
     create  app/components/json_schema_definable.rb
@@ -92,10 +92,10 @@ This task sets up `app/components` as the place of component definitions and an 
 
 ### Export JSON Schema
 
-JsonSchemaComponent provides a rake task to export JSON Schema of components:
+JsonSchemaView provides a rake task to export JSON Schema of components:
 
 ```console
-$ rake json_schema_component:export[primary]
+$ rake json_schema_view:export[primary]
 Exports resource classes in ComponentSchemaSet...
 ExampleTodoListComponent -> /path/to/rails/application/json_schema/ExampleTodoListComponent.json
 ```
@@ -110,8 +110,8 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/increments/json_schema_component. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/increments/json_schema_component/blob/main/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/increments/json_schema_view. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/increments/json_schema_view/blob/main/CODE_OF_CONDUCT.md).
 
 ## Code of Conduct
 
-Everyone interacting in the JsonSchemaComponent project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/increments/json_schema_component/blob/main/CODE_OF_CONDUCT.md).
+Everyone interacting in the JsonSchemaView project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/increments/json_schema_view/blob/main/CODE_OF_CONDUCT.md).

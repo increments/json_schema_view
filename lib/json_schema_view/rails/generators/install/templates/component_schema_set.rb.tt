@@ -3,13 +3,13 @@
 require "json_schema_view"
 
 # Configure what resource to export its JSON Schema and where directory to export.
-class ComponentSchemaSet < ::JsonSchemaView::SchemaSet
-  # ComponentSchemaSet looks up component classses in this directory.
+class <%= schema_set_class_name %> < ::JsonSchemaView::SchemaSet
+  # <%= schema_set_class_name %> looks up component classses in this directory.
   def root_path
     __dir__
   end
 
-  # ComponentSchemaSet exports JSON Schema of these component classes.
+  # <%= schema_set_class_name %> exports JSON Schema of these component classes.
   def resource_classes_to_export
     [
       # Export all component classes (except for BaseComopnent) in `root_path`.
@@ -18,8 +18,8 @@ class ComponentSchemaSet < ::JsonSchemaView::SchemaSet
     ]
   end
 
-  # ComponentSchemaSet exports JSON Schema to this directory.
+  # <%= schema_set_class_name %> exports JSON Schema to this directory.
   def export_path
-    Rails.root.join("json_schema")
+    Rails.root.join("<%= export_path %>")
   end
 end
